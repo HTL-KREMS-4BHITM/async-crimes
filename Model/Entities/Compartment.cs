@@ -3,11 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entities;
 
+[Table("COMPARTMENTS")]
 public class Compartment
 {
-    [Key]
+    [Key, Column("COMPARTMENT_ID"), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int CompartmentId { get; set; }
-    [ForeignKey("Aircraft")]
+    
+    
+    [ForeignKey("AIRCRAFT_ID")]
     public int AircraftId { get; set; }
     public Aircraft Aircraft { get; set; }
     public List<Machinery> Machineries { get; set; }

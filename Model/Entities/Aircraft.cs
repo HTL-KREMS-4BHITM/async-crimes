@@ -2,12 +2,12 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entities;
-[Table("AIRCRAFT")]
+[Table("AIRCRAFTS")]
 public class Aircraft
 {
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Required, Column("AIRCRAFT_ID")]
     public int AircraftId { get; set; }
-    [ForeignKey("Specification")]
+    [ForeignKey("SPEZIFICATION_ID")]
     public int SpecificationId { get; set; }
     [Required, MaxLength(100)]
     public string Fuel { get; set; }
