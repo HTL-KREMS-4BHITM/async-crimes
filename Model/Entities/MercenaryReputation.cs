@@ -9,7 +9,7 @@ public class MercenaryReputation
     public int SyndicateId { get; set; }
     public CrimeSyndicate Syndicate { get; set; }
     
-    [Column("MERCENARY_ID")]
+    [Key, Column("MERCENARY_ID")]
     public int MercenaryId { get; set; }
     public Mercenary Mercenary { get; set; }
     
