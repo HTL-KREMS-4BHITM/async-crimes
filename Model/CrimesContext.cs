@@ -9,6 +9,17 @@ public class CrimesContext:DbContext
     {
     }
 
+    public DbSet<Aircraft> Aircrafts { get; set; }
+    public DbSet<AircraftCrewJT> AircraftCrewJT { get; set; }
+    public DbSet<AircraftSpecification> AircraftSpecifications { get; set; }
+    public DbSet<Compartment> Compartments { get; set; }
+    public DbSet<CrimeSyndicate> CrimeSyndicates { get; set; }
+    public DbSet<EnergySystem> EnergySystems { get; set; }
+    public DbSet<EnvironmentalSystem> EnvironmentalSystems { get; set; }
+    public DbSet<Machinery> Machineries { get; set; }
+    public DbSet<Mercenary> Mercenaries { get; set; }
+    public DbSet<MercenaryReputation> MercenaryReputations { get; set; }
+    public DbSet<Weapon> Weapons { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<MercenaryReputation>()
