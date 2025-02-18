@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entities;
-
+[Table("CRIME_SYNDICATES")]
 public class CrimeSyndicate
 {
     [Key, Column("SYNDICATE_ID"), DatabaseGenerated(DatabaseGeneratedOption.Identity)]

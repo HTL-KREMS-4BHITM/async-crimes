@@ -7,6 +7,5 @@ public class Weapon
 {
     [Column("MACHINERY_ID")]
     public int MachineryId { get; set; }
-    [Column("MACHINERY")]
     public Machinery Machinery { get; set; }
 }

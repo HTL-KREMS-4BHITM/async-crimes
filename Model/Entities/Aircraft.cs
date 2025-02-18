@@ -9,12 +9,20 @@ public class Aircraft
     public int AircraftId { get; set; }
     [ForeignKey("SPEZIFICATION_ID")]
     public int SpecificationId { get; set; }
+    
+    [Column("FUEL")]
     [Required, MaxLength(100)]
     public string Fuel { get; set; }
+    
+    [Column("SPEED")]
     [Required]
     public int Speed { get; set; }
+    
+    [Column("ALTITUDE")]
     [Required]
     public int Altitude { get; set; }
+    
+    [Column("NAME")]
     [Required, MaxLength(200)]
     public string Name { get; set; }
     public AircraftSpecification Specification { get; set; }

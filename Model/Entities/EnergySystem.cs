@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entities;
-[Table("ENERGY_SYSTEM")]
+[Table("ENERGY_SYSTEMS")]
 public class EnergySystem
 {
     [Key, Column("MACHINERY_ID")]

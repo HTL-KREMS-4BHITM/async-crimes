@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entities;
-[Table("ENVIRONMENTAL_SYSTEM")]
+[Table("ENVIRONMENTAL_SYSTEMS")]
 public class EnvironmentalSystem
 {
     [Key, Column("MACHINERY_ID")]

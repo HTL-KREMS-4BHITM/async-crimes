@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entities;
-[Table("MACHINERY")]
+[Table("MACHINERIES")]
 public class Machinery
 {
     [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity), Column("MACHINERY_ID")]
