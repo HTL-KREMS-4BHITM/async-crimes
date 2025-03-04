@@ -14,4 +14,6 @@ public class Compartment
     public int AircraftId { get; set; }
     public Aircraft Aircraft { get; set; }
     public List<Machinery> Machineries { get; set; }
+    [Column("NAME")]
+    public string Name { get; set; }
 }

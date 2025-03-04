@@ -1,8 +1,11 @@
+using Domain;
+using Domain.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Model;
+using Model.Entities;
 using WebGui.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +21,9 @@ builder.Services.AddDbContextFactory<CrimesContext>(
         new MySqlServerVersion(new Version(8, 0, 36))
     )
 );
+
+builder.Services.AddTransient<IRepositoryAsync<CrimeSyndicate>, CrimeSyndicateRepository>();
+
 
 
 var app = builder.Build();

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entities;
-[Table("AIRCRAFT_SPEZIFICATIONS")]
+[Table("AIRCRAFT_SPECIFICATIONS")]
 public class AircraftSpecification
 {
     [Key, Column("SPEZIFICATION_ID"), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
