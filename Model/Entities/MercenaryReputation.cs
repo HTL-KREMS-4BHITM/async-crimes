@@ -9,8 +9,8 @@ public class MercenaryReputation
     public int SyndicateId { get; set; }
     public CrimeSyndicate Syndicate { get; set; }
     
-    [Key, Column("MERCENARY_ID")]
-    public int MercenaryId { get; set; }
+    [Column("MERCENARY_ID")]
+    public int Mercenary_Id { get; set; }
     public Mercenary Mercenary { get; set; }
     
     [Required, MaxLength(45), Column("REPUTATION_CHANGE")]

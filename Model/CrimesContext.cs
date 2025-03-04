@@ -30,17 +30,23 @@ public class CrimesContext:DbContext
         modelBuilder.Entity<MercenaryReputation>()
             .HasOne(m => m.Mercenary)
             .WithMany()
-            .HasForeignKey(m => m.MercenaryId);
+            .HasForeignKey(m => m.Mercenary_Id);
+
+        modelBuilder.Entity<MercenaryReputation>()
+            .HasKey(m => new { m.Mercenary_Id, m.SyndicateId });
         
         modelBuilder.Entity<AircraftCrewJT>()
             .HasOne(a => a.Aircraft)
             .WithMany()
-            .HasForeignKey(a => a.AircraftId);
+            .HasForeignKey(a => a.Aircraft_Id);
         
         modelBuilder.Entity<AircraftCrewJT>()
             .HasOne(m => m.Mercenary)
             .WithMany()
-            .HasForeignKey(m => m.MercenaryId);
+            .HasForeignKey(m => m.Mercenary_Id);
+
+        modelBuilder.Entity<AircraftCrewJT>()
+            .HasKey(c => new { c.Aircraft_Id, c.Mercenary_Id });
         
         modelBuilder.Entity<Aircraft>()
             .HasOne(s => s.Specification)
