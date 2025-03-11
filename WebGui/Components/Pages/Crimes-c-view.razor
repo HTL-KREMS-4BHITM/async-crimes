@@ -1,13 +1,11 @@
 ﻿@using Domain
 @using Model.Entities
+@inject IRepositoryAsync<MercenaryReputation> MercenaryReputationRepository;
 @inject IRepositoryAsync<CrimeSyndicate> CrimeSyndicateRepository;
 @page "/Crimes_c_view"
 <h3>Crimes_c_view</h3>
-@foreach (var currentSyn in Syndicates)
-{
-
     <table class="table">
-        <thead>
+        <thead> 
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
@@ -15,20 +13,36 @@
         </tr>
         </thead>
         <tbody>
+@foreach (var currentSyn in Return)
+{
+
         <tr>
             <th scope="row">@currentSyn.SyndicateId</th>
             <td>@currentSyn.Name</td>
             <td>@currentSyn.Location</td>
         </tr>
-        </tbody>
-    </table>
 
 }
+        </tbody>
+    </table>
 @code {
-    public List<CrimeSyndicate>? Syndicates { get; set; } = new List<CrimeSyndicate>();
+    public List<CrimeSyndicate>? Syndicates { get; set; } = new List<CrimeSyndicate>(); 
+    public List<MercenaryReputation>? Crimes { get; set; } = new(); 
+    public List<CrimeSyndicate>? Return { get; set; } = new(); 
     protected async override Task OnInitializedAsync()
     {
         Syndicates = await CrimeSyndicateRepository.ReadAll();
+    
+        foreach (var syndicate in Syndicates)
+        {
+            Crimes = await MercenaryReputationRepository.Read(m => m.SyndicateId == syndicate.SyndicateId);
+            if (Crimes.Count!=0)
+            {
+                Return.Add(syndicate);
+            }
+        }
+
+        
     }
 
 }
