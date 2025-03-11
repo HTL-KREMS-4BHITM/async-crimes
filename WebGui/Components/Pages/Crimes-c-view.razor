@@ -6,29 +6,29 @@
 @foreach (var currentSyn in Syndicates)
 {
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Location</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">@currentSyn.SyndicateId</th>
-            <td>@currentSyn.Name</td>
-            <td>@currentSyn.Location</td>
-        </tr>
-        </tbody>
-    </table>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">@currentSyn.SyndicateId</th>
+        <td>@currentSyn.Name</td>
+        <td>@currentSyn.Location</td>
+    </tr>
+    </tbody>
+</table>
 
 }
 @code {
-    public List<CrimeSyndicate>? Syndicates { get; set; } = new List<CrimeSyndicate>();
-    protected async override Task OnInitializedAsync()
-    {
-        Syndicates = await CrimeSyndicateRepository.ReadAll();
-    }
+public List<CrimeSyndicate>? Syndicates { get; set; } = new List<CrimeSyndicate>();
+protected async override Task OnInitializedAsync()
+{
+Syndicates = await CrimeSyndicateRepository.ReadAll();
+}
 
 }

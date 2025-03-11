@@ -1,6 +1,43 @@
-﻿@page "/Crimes_sorted_söldner"
-<h3>Crimes_sorted_söldner</h3>
+﻿@using Domain
+@using Model.Entities
+@inject IRepositoryAsync<CrimeSyndicate> CrimeSyndicateRepository
+@page "/Crimes_sorted_söldner"
+<h3>Crime Syndicates Sorted by Mercenary Count</h3>
+@if (SortedSyndicates is not null && SortedSyndicates.Any())
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Mercenary Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var syndicate in SortedSyndicates)
+        {
+            <tr>
+                <th scope="row">@syndicate.SyndicateId</th>
+                <td>@syndicate.Name</td>
+                <td>@syndicate.Location</td>
+                <td>@syndicate.Mercenaries.Count</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No syndicates found.</p>
+}
 
 @code {
-    
+    private List<CrimeSyndicate> SortedSyndicates { get; set; } = new();
+
+    protected async override Task OnInitializedAsync()
+    {
+        var syndicates = await CrimeSyndicateRepository.ReadAll();
+        SortedSyndicates = syndicates.OrderByDescending(s => s.Mercenaries?.Count ?? 0).ToList();
+    }
 }
