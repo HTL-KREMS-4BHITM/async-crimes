@@ -2,7 +2,7 @@
 @using Model.Entities
 @inject IRepositoryAsync<CrimeSyndicate> CrimeSyndicateRepository
 @page "/Crimes_sorted_söldner"
-<h3>Crime Syndicates Sorted by Mercenary Count</h3>
+<h3>Crimes Syndicates Sorted by Mercenary Count</h3>
 @if (SortedSyndicates is not null && SortedSyndicates.Any())
 {
     <table class="table table-striped">
