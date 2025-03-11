@@ -1,6 +1,7 @@
 ﻿@using Domain
 @using Model.Entities
 @inject IRepositoryAsync<CrimeSyndicate> CrimeSyndicateRepository
+@inject IRepositoryAsync<MercenaryReputation> MercenaryReputationRepository
 @page "/Crimes_sorted_söldner"
 <h3>Crimes Syndicates Sorted by Mercenary Count</h3>
 @if (SortedSyndicates is not null && SortedSyndicates.Any())
@@ -15,7 +16,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach (var syndicate in SortedSyndicates)
+        @foreach (var syndicate in Retun)
         {
             <tr>
                 <th scope="row">@syndicate.SyndicateId</th>
@@ -30,14 +31,39 @@
 else
 {
     <p>No syndicates found.</p>
+    
 }
 
 @code {
     private List<CrimeSyndicate> SortedSyndicates { get; set; } = new();
+    private List<CrimeSyndicate> Retun { get; set; } = new();
+    private List<MercenaryReputation> MCrimeSyndicates { get; set; } = new();
 
     protected async override Task OnInitializedAsync()
     {
         var syndicates = await CrimeSyndicateRepository.ReadAll();
-        SortedSyndicates = syndicates.OrderByDescending(s => s.Mercenaries?.Count ?? 0).ToList();
+        var MCrimeSyndicates = await MercenaryReputationRepository.ReadAll();
+        Dictionary<int, CrimeSyndicate> d = new();
+        foreach (var syndicate in SortedSyndicates)
+        {
+            List<MercenaryReputation> x = await MercenaryReputationRepository.Read(s => s.SyndicateId == syndicate.SyndicateId);
+            if (x.Count != 0)
+            {
+    
+
+                d.Add(x.Count(), syndicate);
+            }
+            else
+            {
+                
+            }
+            
+        }
+
+        var Retun = d.OrderBy(kvp => kvp.Key).ToList();
+
     }
+
+    
+    
 }
