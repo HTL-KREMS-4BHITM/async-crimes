@@ -15,5 +15,6 @@ public class CrimeSyndicate
     [Column("LOCATION")]
     [Required, MaxLength(200)]
     public string Location { get; set; }
+    [Column("MERCENARY_REPUTATION")]
     public List<MercenaryReputation> Mercenaries { get; set; }
 }
