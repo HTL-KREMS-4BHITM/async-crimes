@@ -23,6 +23,7 @@ builder.Services.AddDbContextFactory<CrimesContext>(
 );
 
 builder.Services.AddTransient<IRepositoryAsync<CrimeSyndicate>, CrimeSyndicateRepository>();
+builder.Services.AddTransient<IRepositoryAsync<MercenaryReputation>, MercenaryReputationRepository>();
 
 
 
